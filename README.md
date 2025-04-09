@@ -1,3 +1,6 @@
+![Dev Setup Badge](./assets/DEV-SETUP-badge.png)
+
+
 # 🚀 Script d'installation : Environnement de développement web complet (config Romain)
 
 Bienvenue dans ton setup automatisé pour un environnement de développement **full stack web** sous Ubuntu !
