@@ -1,6 +1,5 @@
 ![Dev Setup Badge](./assets/DEV-SETUP-badge.png)
 
-
 # 🚀 Script d'installation : Environnement de développement web complet (config Romain)
 
 Bienvenue dans ton setup automatisé pour un environnement de développement **full stack web** sous Ubuntu !
@@ -17,7 +16,7 @@ Ce script installe et configure automatiquement :
 
 - Node.js (via NVM), npm, yarn, pnpm
 - Docker + Docker Compose
-- MongoDB
+- MongoDB 7 (via dépôt officiel)
 - MariaDB (alternative à MySQL)
 - Git + outils de base (curl, wget, unzip, etc.)
 
