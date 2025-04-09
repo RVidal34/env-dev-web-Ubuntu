@@ -5,7 +5,13 @@ echo "🔧 Installation d'un environnement de développement web full stack (con
 # Mise à jour du système
 sudo apt update && sudo apt upgrade -y
 
-# Correction de python si manquant
+# Vérification du lien python → python3
+if ! command -v python &> /dev/null; then
+    echo "🔁 Création du lien symbolique python -> python3"
+    sudo ln -s /usr/bin/python3 /usr/bin/python
+else
+    echo "✅ python est déjà disponible."
+fi
 if ! command -v python &> /dev/null; then
     echo "🔁 Création du lien symbolique python -> python3"
     sudo ln -s /usr/bin/python3 /usr/bin/python
