@@ -15,7 +15,7 @@
 
 ---
 
-## 📦 LAMP installé automatiquement
+## 📦 LAMP installé avec le script principal
 
 Le script installe :
 - Apache2 (port 8080)
