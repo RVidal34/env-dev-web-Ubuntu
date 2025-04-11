@@ -1,173 +1,80 @@
-![Dev Setup Badge](./assets/DEV-SETUP-badge.png)
+# 🚀 Environnement de développement Web complet - Setup Romain
 
-# 🚀 Script d'installation : Environnement de développement web complet (config Romain)
+Ce projet fournit un ensemble de scripts pour mettre en place un environnement de développement web complet et professionnel sous Ubuntu.
 
-Bienvenue dans ton setup automatisé pour un environnement de développement **full stack web** sous Ubuntu !
+## 📄 Contenu principal
 
-Ce script permet d'installer tous les outils nécessaires pour être rapidement opérationnel avec une configuration stable, moderne et professionnelle.
+### ⚙️ Script d'installation global
 
----
+- `install-dev-romain-v3-lamp.sh` → installe automatiquement :
+  - Node.js, NVM, pnpm, yarn
+  - MongoDB, MariaDB, Docker, Postman
+  - PHP (latest), Apache2 (port 8080), phpMyAdmin
+  - VS Code avec extensions web utiles
+  - Zsh, Oh My Zsh, Starship, Fastfetch
+  - Structure de dossiers projets frontend/backend
 
-## 📄 Contenu du script
+### 🔧 Création de projets LAMP (PHP + Apache)
 
-Ce script installe et configure automatiquement :
+- `create-lamp-site.sh`
+  - Crée un projet dans `/var/www/<projet>/public`
+  - Ajoute un `.htaccess` et un `index.php`
+  - Gère le vhost Apache automatiquement
+  - Ajoute l’URL `<projet>.local` dans `/etc/hosts`
+  - Te propose de désactiver les autres sites
 
-### 🔧 Outils de développement :
+### 🚨 Switch entre Apache et Node.js
 
-- Node.js (via NVM), npm, yarn, pnpm
-- Docker + Docker Compose
-- MongoDB 7 (via dépôt officiel)
-- MariaDB (alternative à MySQL)
-- Git + outils de base (curl, wget, unzip, etc.)
-
-### 🖥 VS Code (via Snap) avec extensions :
-
-- Prettier, ESLint
-- GitLens, Live Server
-- Tailwind CSS IntelliSense, Path Intellisense
-- Material Icon Theme
-
-### ⏳ Terminal optimisé :
-
-- Starship prompt (rapide, personnalisable)
-- Fastfetch (affichage système stylé au démarrage)
-- Bash + Zsh + Oh My Zsh (tu peux choisir ton shell préféré)
-
-### 📁 Structure de projet automatique :
-
-Crée le dossier `~/Documents/dev/` avec les sous-dossiers :
-
-```
-frontend/      # projets front React / Next.js
-backend/       # APIs Express / Nest.js
-fullstack/     # apps complètes
-sandbox/       # projets tests
-templates/     # bases réutilisables
-```
-
-### 🔐 Aliases bash utiles
-
-Voici la liste complète des alias installés automatiquement :
-
-```bash
-# 🔁 Alias personnalisés
-gb='gedit .bashrc'                # Édite le fichier .bashrc
-al='alias'                        # Affiche tous les alias enregistrés
-
-# Recherche de paquets
-as='apt-cache search'            # Recherche un paquet dans les dépôts
-vp='dpkg -l | grep'              # Vérifie si un paquet est installé
-pi='dpkg -l > ~/Bureau/paquets_installés.txt'  # Sauvegarde la liste des paquets installés
-
-# Installation et suppression
-it='sudo apt update && sudo apt install'
-ri='sudo apt update && sudo apt reinstall'
-rv='sudo apt remove'
-pu='sudo apt purge'
-
-# Mise à jour et nettoyage
-ul='apt list --upgradable'
-up='sudo apt update && sudo apt upgrade'
-ar='sudo apt autoremove'
-ac='sudo apt autoclean'
-
-# Git & navigation
-ll='ls -lah --color=auto'
-gs='git status'
-ga='git add .'
-gc='git commit -m'
-dev='cd ~/Documents/dev'
-c='clear'
-restart-docker='sudo systemctl restart docker'
-```
-
-### 💡 Accéder aux alias
-
-Ils sont ajoutés dans le fichier `~/.bashrc`. Pour les consulter ou les modifier :
-
-```bash
-gedit ~/.bashrc  # ou nano ~/.bashrc
-```
-
-Pour un simple affichage de la liste des alias :
-
-```bash
-al
-```
-
-Puis recharge ton terminal :
-
-```bash
-source ~/.bashrc
-```
+- `switch-to-apache.sh`
+  - Stoppe Node (port 3000) et relance Apache (port 8080)
+- `switch-to-node.sh`
+  - Stoppe Apache pour libérer le port 3000
 
 ---
 
-## 🚀 Installation rapide
-
-### ✅ Méthode recommandée : commande unique
+## 📁 Structure de dossiers recommandée
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/ton-pseudo/env-dev-web-romain/main/install-dev-romain.sh)
+~/Documents/dev/
+├── frontend/
+├── backend/
+├── fullstack/
+├── sandbox/
+├── templates/
 ```
 
-> Remplace `ton-pseudo` par ton nom d'utilisateur GitHub si tu clones ce dépôt.
-
-### 📁 Méthode classique : clone Git
-
-```bash
-git clone https://github.com/ton-pseudo/env-dev-web-romain.git
-cd env-dev-web-romain
-chmod +x install-dev-romain.sh
-./install-dev-romain.sh
-```
+Les projets LAMP se trouvent dans `/var/www/<projet>/public`
 
 ---
 
-## 🚫 Prérequis
+## 🔗 Documentation complémentaire
 
-- Distribution Ubuntu (22.04 ou supérieur recommandé)
-- Un accès sudo
-- Connexion internet
-
----
-
-## 🚀 Et ensuite ?
-
-### 🌐 Redémarre ta session ou ton PC :
-
-Pour activer les changements de shell, Docker, etc.
-
-### 📈 Teste tes outils
-
-Vérifie que tout est installé correctement :
-
-```bash
-node -v
-npm -v
-yarn -v
-pnpm -v
-docker --version
-mongo --version
-code --version
-```
-
-### 🔍 Explore ta structure de dev :
-
-```bash
-cd ~/Documents/dev
-ls -lah
-```
+- [README LAMP](README-lamp.md) : Apache2, PHP, vhosts, phpMyAdmin
+- [README NODE](README-node.md) : Node.js, Express, cohabitation avec Apache
+- [README SWITCHING](README-switching.md) : Comment changer de stack proprement
 
 ---
 
-## 📃 Licence
+## 🌐 Accès rapide (par défaut)
 
-Ce projet est libre d'utilisation et de modification.
+| Service          | URL                              |
+| ---------------- | -------------------------------- |
+| Apache (default) | http://localhost:8080            |
+| phpMyAdmin       | http://localhost:8080/phpmyadmin |
+| Node.js app      | http://localhost:3000            |
+| Projet LAMP      | http://nom-du-projet.local:8080  |
 
 ---
 
-## ✨ Auteur : Romain
+## 💡 Conseils
 
-> Setup conçu pour un dev web moderne, minimaliste et efficace.  
-> Bon code ! 🚀💻
+- Utilise `create-lamp-site.sh` pour gérer plusieurs projets PHP proprement
+- Apache écoute sur le port 8080 pour éviter les conflits avec Node
+- Node.js reste libre d’utiliser le port 3000 ou d’autres (Vite, Next.js...)
+- Tu peux désactiver temporairement Apache ou Node selon le besoin avec les scripts de switch
+
+---
+
+## 🌟 Auteur : Romain
+
+> Setup conçu pour les devs web modernes, que ce soit pour du test, de la prod légère ou du freelance !

@@ -1,52 +1,38 @@
 #!/bin/bash
 
-echo "🔧 Installation d'un environnement de développement web full stack (config Romain)..."
+echo "🔧 Installation complète de l’environnement de développement web fullstack (Romain + LAMP)..."
 
-# Mise à jour du système
+# Mise à jour système
 sudo apt update && sudo apt upgrade -y
 
-# Vérification du lien python → python3
+# Correction du lien python -> python3
 if ! command -v python &> /dev/null; then
     echo "🔁 Création du lien symbolique python -> python3"
     sudo ln -s /usr/bin/python3 /usr/bin/python
 else
     echo "✅ python est déjà disponible."
 fi
-if ! command -v python &> /dev/null; then
-    echo "🔁 Création du lien symbolique python -> python3"
-    sudo ln -s /usr/bin/python3 /usr/bin/python
-fi
 
-# Outils de base
-sudo apt install -y   curl wget git unzip build-essential   zsh gnupg lsb-release ca-certificates apt-transport-https software-properties-common   fastfetch
+# Outils système et dev
+sudo apt install -y curl wget git unzip build-essential zsh gnupg lsb-release ca-certificates apt-transport-https software-properties-common fastfetch
 
-# Terminal GNOME + Starship prompt
+# Starship (prompt) + Fastfetch (affichage)
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 echo 'fastfetch' >> ~/.bashrc
 
 # ZSH + Oh My Zsh
-if ! command -v zsh &> /dev/null; then
-    echo "❌ Zsh n’a pas été installé correctement."
-else
-    echo "✅ Zsh est installé."
-    chsh -s $(which zsh)
-    export RUNZSH=no
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    echo 'eval "$(starship init zsh)"' >> ~/.zshrc
-    echo 'fastfetch' >> ~/.zshrc
+if command -v zsh &> /dev/null; then
+  echo "✅ Zsh est installé."
+  chsh -s $(which zsh)
+  export RUNZSH=no
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+  echo 'fastfetch' >> ~/.zshrc
 fi
 
-# Configuration NVM dans bashrc et zshrc
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.bashrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.bashrc
-echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
-echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
-
-# Aliases
+# Aliases utiles
 cat << 'EOF' >> ~/.bashrc
-
-# 🔁 Alias personnalisés
 alias gb='gedit .bashrc'
 alias al='alias'
 alias as='apt-cache search'
@@ -67,10 +53,9 @@ alias gc='git commit -m'
 alias dev='cd ~/Documents/dev'
 alias c='clear'
 alias restart-docker='sudo systemctl restart docker'
-
 EOF
 
-# Structure des dossiers
+# Structure projets
 mkdir -p ~/Documents/dev/{frontend,backend,fullstack,sandbox,templates}
 
 # VS Code
@@ -83,7 +68,7 @@ code --install-extension pkief.material-icon-theme
 code --install-extension christian-kohler.path-intellisense
 code --install-extension bradlc.vscode-tailwindcss
 
-# Node, NPM, Yarn, PNPM
+# Node.js + NVM + PNPM/Yarn
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
 source "$NVM_DIR/nvm.sh"
@@ -96,7 +81,7 @@ sudo apt install -y docker.io docker-compose
 sudo usermod -aG docker $USER
 sudo snap install postman
 
-# Installation de MongoDB 7 via dépôt officiel
+# MongoDB 7
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
 echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
 sudo apt update
@@ -108,10 +93,28 @@ sudo systemctl start mongod
 sudo apt install -y mariadb-server
 sudo mysql_secure_installation
 
-# Info extensions GNOME
-echo "💡 Pour gérer les extensions GNOME, utilise : https://extensions.gnome.org"
+# Apache2 + PHP + modules
+sudo apt install -y apache2
+sudo sed -i 's/Listen 80/Listen 8080/' /etc/apache2/ports.conf
+sudo sed -i 's/<VirtualHost *:80>/<VirtualHost *:8080>/' /etc/apache2/sites-available/000-default.conf
+sudo systemctl restart apache2
 
-# Fin
+sudo apt install -y software-properties-common ca-certificates lsb-release apt-transport-https
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt install -y php php-cli php-common php-mysql php-curl php-mbstring php-xml php-zip php-gd libapache2-mod-php
+
+# phpMyAdmin
+sudo apt install -y phpmyadmin
+
+# Test PHP : /var/www/html/index.php
+echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/index.php > /dev/null
+
+# Message final
 echo ""
-echo "✅ Installation terminée ! Redémarre ta session pour finaliser Zsh et Docker."
-echo "✨ Bon dev Romain ! 🚀"
+echo "✅ Installation complète terminée !"
+echo "📁 Apache fonctionne sur : http://localhost:8080"
+echo "🧰 PHPMyAdmin : http://localhost:8080/phpmyadmin"
+echo "📄 Un index.php de test est dispo dans /var/www/html/"
+echo "📦 Pour créer un projet LAMP : ./create-lamp-site.sh"
+echo "🌍 Pour passer entre Apache et Node.js : ./switch-to-apache.sh / ./switch-to-node.sh"
