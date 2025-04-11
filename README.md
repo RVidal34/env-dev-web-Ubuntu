@@ -1,6 +1,17 @@
 # 🚀 Environnement de développement Web complet - Setup Romain
 
-Ce projet fournit un ensemble de scripts pour mettre en place un environnement de développement web complet et professionnel sous Ubuntu.
+Ce projet fournit un ensemble de scripts pour mettre en place un environnement de développement web et professionnel sous Ubuntu.
+
+---
+
+## 📚 Navigation rapide
+
+- [🏠 Retour à l'accueil](README.md)
+- [📘 LAMP (Apache + PHP)](README-lamp.md)
+- [📗 Node.js & Express](README-node.md)
+- [📙 Switch Apache <-> Node](README-switching.md)
+
+---
 
 ## 📄 Contenu principal
 
@@ -29,6 +40,47 @@ Ce projet fournit un ensemble de scripts pour mettre en place un environnement d
   - Stoppe Node (port 3000) et relance Apache (port 8080)
 - `switch-to-node.sh`
   - Stoppe Apache pour libérer le port 3000
+
+## 📥 Installation des scripts
+
+### 📁 Fichiers individuels
+
+Tu peux télécharger chaque script séparément (install, create, switch...), les rendre exécutables et lancer l'installation principale :
+
+```bash
+chmod +x install-dev-romain-v3-lamp.sh
+chmod +x create-lamp-site.sh
+chmod +x switch-to-apache.sh
+chmod +x switch-to-node.sh
+./install-dev-romain-v3-lamp.sh
+```
+
+Ensuite tu pourras créer des projets LAMP avec :
+
+```bash
+./create-lamp-site.sh
+```
+
+Et basculer entre Apache et Node.js :
+
+```bash
+./switch-to-apache.sh
+./switch-to-node.sh
+```
+
+### 📦 Installation via archive `.zip`
+
+1. [Télécharge l'archive ZIP](https://ton-lien-vers/env-dev-romain.zip)
+2. Extrais-la dans un dossier comme `~/env-dev-romain`
+3. Ouvre un terminal et exécute :
+
+```bash
+cd ~/env-dev-romain
+chmod +x *.sh
+./install-dev-romain-v3-lamp.sh
+```
+
+---
 
 ---
 
@@ -77,4 +129,4 @@ Les projets LAMP se trouvent dans `/var/www/<projet>/public`
 
 ## 🌟 Auteur : Romain
 
-> Setup conçu pour les devs web modernes, que ce soit pour du test, de la prod légère ou du freelance !
+> Setup conçu pour les devs web, que ce soit pour du test, de la prod légère ou du freelance !

@@ -1,6 +1,17 @@
 # 🔄 Scripts de switch Apache <-> Node.js
 
-[🏡 **ACCUEIL**](README.md)
+
+---
+
+## 📚 Navigation rapide
+
+- [🏠 Retour à l'accueil](README.md)
+- [📘 LAMP (Apache + PHP)](README-lamp.md)
+- [📗 Node.js & Express](README-node.md)
+- [📙 Switch Apache <-> Node](README-switching.md)
+
+---
+
 
 ---
 
