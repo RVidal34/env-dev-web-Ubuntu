@@ -16,7 +16,7 @@ Ce guide explique comment configurer Git pour un usage personnel ou professionne
 
 ## 📋 Configuration initiale via le script
 
-Le script `install-dev-romain-v3-git.sh` configure Git en te demandant :
+Le script `install-dev-v3-git.sh` configure Git en te demandant :
 
 - Ton nom d'utilisateur et ton email
 - L’éditeur par défaut (`nano` ou `code`)

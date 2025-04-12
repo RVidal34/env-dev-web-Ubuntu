@@ -18,7 +18,7 @@ Ce guide explique comment configurer configurer et utiliser le serveur LAMP.
 
 ## 📦 Installé avec le script principal
 
-Le script installe :
+Le script `install-dev-v3-git.sh` installe :
 
 - Apache2 (port 8080)
 - PHP 8.x (via PPA `ondrej/php`)

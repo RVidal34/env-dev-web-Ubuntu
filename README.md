@@ -18,7 +18,7 @@ Ce projet fournit un ensemble de scripts pour mettre en place un environnement d
 
 ### ⚙️ Script d'installation global
 
-- `install-dev-romain-v3-lamp.sh` → installe automatiquement :
+- `install-dev-v3.sh` → installe automatiquement :
   - Node.js, NVM, pnpm, yarn
   - MongoDB, MariaDB, Docker, Postman
   - PHP (latest), Apache2 (port 8080), phpMyAdmin
@@ -71,14 +71,14 @@ Et basculer entre Apache et Node.js :
 
 ### 📦 Installation via archive `.zip`
 
-1. [Télécharge l'archive ZIP](https://ton-lien-vers/env-dev-romain.zip)
-2. Extrais-la dans un dossier comme `~/env-dev-romain`
+1. [Télécharge l'archive ZIP](https://ton-lien-vers/env-dev-v3.zip)
+2. Extrais-la dans un dossier comme `~/env-dev-v3`
 3. Ouvre un terminal et exécute :
 
 ```bash
 cd ~/env-dev-romain
 chmod +x *.sh
-./install-dev-romain-v3-lamp.sh
+./install-dev-v3.sh
 ```
 
 ---

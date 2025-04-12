@@ -18,6 +18,8 @@ Ce guide explique comment configurer un serveur Node avec Express et l'utiliser 
 
 ## 📦 Installé avec le script principal
 
+Le script `install-dev-v3-git.sh` installe :
+
 - Node.js via NVM (version LTS)
 - npm, yarn, pnpm
 - VS Code avec ESLint, Prettier, Tailwind
