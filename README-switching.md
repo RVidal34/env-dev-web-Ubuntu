@@ -1,5 +1,6 @@
 # 🔄 Scripts de switch Apache <-> Node.js
 
+Ce guide explique comment Utiliser le switching pour éviter les conflits en LAMP et Express.
 
 ---
 
@@ -8,16 +9,17 @@
 - [🏠 Retour à l'accueil](README.md)
 - [📘 LAMP (Apache + PHP)](README-lamp.md)
 - [📗 Node.js & Express](README-node.md)
+- [📗 Git](README-git.md)
 - [📙 Switch Apache <-> Node](README-switching.md)
 
 ---
-
 
 ---
 
 ## 📂 Objectif
 
 Permettre de basculer rapidement entre :
+
 - Un projet PHP (Apache)
 - Un projet JS (Node.js)
 
@@ -26,6 +28,7 @@ Permettre de basculer rapidement entre :
 ## 🧰 Scripts disponibles
 
 ### ▶️ `switch-to-apache.sh`
+
 - Stoppe les serveurs Node (sur 3000)
 - Démarre Apache
 - Apache écoute sur le port 8080
@@ -37,6 +40,7 @@ Permettre de basculer rapidement entre :
 ---
 
 ### ▶️ `switch-to-node.sh`
+
 - Stoppe Apache
 - Libère le port 3000 pour ton serveur Node.js (Vite, Express…)
 

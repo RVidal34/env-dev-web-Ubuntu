@@ -1,5 +1,6 @@
 # 🚀 Guide Node.js : Express & coexistence avec Apache
 
+Ce guide explique comment configurer un serveur Node avec Express et l'utiliser à côté d'un serveur Apache.
 
 ---
 
@@ -8,10 +9,10 @@
 - [🏠 Retour à l'accueil](README.md)
 - [📘 LAMP (Apache + PHP)](README-lamp.md)
 - [📗 Node.js & Express](README-node.md)
+- [📕 Git](README-git.md)
 - [📙 Switch Apache <-> Node](README-switching.md)
 
 ---
-
 
 ---
 
@@ -64,6 +65,7 @@ Mais si tu veux libérer les ports, utilise :
 ## 🧱 Utiliser Apache et Node ensemble ?
 
 Oui, chacun sur un port différent :
+
 - Apache : `http://localhost:8080`
 - Node.js : `http://localhost:3000`
 
@@ -75,4 +77,3 @@ Tu peux aussi configurer un reverse proxy avec Apache vers un serveur Node (ex :
 
 - Support de proxy inversé Apache → Node
 - Templates de projet (Express, API REST, Socket.io)
-

@@ -1,5 +1,6 @@
 # 🔥 Guide LAMP : Apache, PHP, phpMyAdmin & MariaDB
 
+Ce guide explique comment configurer configurer et utiliser le serveur LAMP.
 
 ---
 
@@ -8,16 +9,17 @@
 - [🏠 Retour à l'accueil](README.md)
 - [📘 LAMP (Apache + PHP)](README-lamp.md)
 - [📗 Node.js & Express](README-node.md)
+- [📕 Git](README-git.md)
 - [📙 Switch Apache <-> Node](README-switching.md)
 
 ---
-
 
 ---
 
 ## 📦 Installé avec le script principal
 
 Le script installe :
+
 - Apache2 (port 8080)
 - PHP 8.x (via PPA `ondrej/php`)
 - Modules PHP classiques : `php-mysql`, `php-curl`, `php-mbstring`, `php-xml`, `php-zip`, etc.
@@ -34,6 +36,7 @@ Utilise le script :
 ```
 
 Ce qu’il fait :
+
 - Crée `/var/www/<projet>/public`
 - Ajoute :
   - un `index.php` avec `phpinfo()`
@@ -96,4 +99,3 @@ sudo systemctl reload apache2
 - Propriétaire : toi ($USER)
 - Dossiers : `755` / Fichiers : `644`
 - Apache lit, toi tu modifies
-

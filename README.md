@@ -1,6 +1,6 @@
 # 🚀 Environnement de développement Web complet - Setup Romain
 
-Ce projet fournit un ensemble de scripts pour mettre en place un environnement de développement web et professionnel sous Ubuntu.
+Ce projet fournit un ensemble de scripts pour mettre en place un environnement de développement web sous Ubuntu.
 
 ---
 
@@ -9,6 +9,7 @@ Ce projet fournit un ensemble de scripts pour mettre en place un environnement d
 - [🏠 Retour à l'accueil](README.md)
 - [📘 LAMP (Apache + PHP)](README-lamp.md)
 - [📗 Node.js & Express](README-node.md)
+- [📕 Git](README-git.md)
 - [📙 Switch Apache <-> Node](README-switching.md)
 
 ---
@@ -120,7 +121,7 @@ Les projets LAMP se trouvent dans `/var/www/<projet>/public`
 
 ## 💡 Conseils
 
-- Utilise `create-lamp-site.sh` pour gérer plusieurs projets PHP proprement
+- Utilise `create-lamp-site.sh` pour tes projets PHP proprement
 - Apache écoute sur le port 8080 pour éviter les conflits avec Node
 - Node.js reste libre d’utiliser le port 3000 ou d’autres (Vite, Next.js...)
 - Tu peux désactiver temporairement Apache ou Node selon le besoin avec les scripts de switch
